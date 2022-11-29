@@ -9,5 +9,9 @@ public interface InterfaceProductService {
 
     ProductDto toDto(ProductEntity productEntity);
 
-    List<ProductDto> getAllById();
+    List<ProductDto> getAll();
+
+    Integer addProduct(ProductDto productDto);
+
 }
+

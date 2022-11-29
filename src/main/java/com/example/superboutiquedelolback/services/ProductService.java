@@ -29,13 +29,27 @@ public class ProductService implements InterfaceProductService {
     }
 
     @Override
-    public List<ProductDto> getAllById() {
-        List<ProductEntity> list = productRepository.findAllById();
+    public List<ProductDto> getAll() {
+        List<ProductEntity> list = productRepository.findAll();
         List<ProductDto> dtoList = new ArrayList<>();
         for (ProductEntity productEntity : list) {
             dtoList.add(this.toDto(productEntity));
         }
         return dtoList;
+    }
+
+    @Override
+    public Integer addProduct(ProductDto productDto) {
+        ProductEntity productEntity = new ProductEntity();
+        productEntity.setName(productDto.getName());
+        productEntity.setImage(productDto.getImage());
+        productEntity.setLore(productDto.getLore());
+        productEntity.setPrice(productDto.getPrice());
+        productEntity.setAvailable(productEntity.getAvailable());
+        productEntity.setType(productEntity.getType());
+
+        productRepository.saveAndFlush(productEntity);
+        return productEntity.getId();
     }
 
 }

@@ -3,6 +3,9 @@ package com.example.superboutiquedelolback.controller;
 import com.example.superboutiquedelolback.dto.ProductDto;
 import com.example.superboutiquedelolback.services.InterfaceProductService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -17,7 +20,17 @@ public class ProductController {
 
     @GetMapping("allProduct")
     public List<ProductDto> getAllProduct() {
-        return service.getAllById();
+        return service.getAll();
+    }
+
+    @PostMapping("addProduct")
+    public ResponseEntity<Integer> addProduct(@RequestBody ProductDto productDto) {
+        try {
+            Integer id = service.addProduct(productDto);
+            return new ResponseEntity<>(id, HttpStatus.OK);
+        } catch (Exception e){
+            return new ResponseEntity(e.getMessage(), HttpStatus.BAD_REQUEST);
+        }
     }
 
 }
