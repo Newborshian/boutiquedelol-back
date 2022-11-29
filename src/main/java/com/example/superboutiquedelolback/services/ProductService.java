@@ -45,11 +45,23 @@ public class ProductService implements InterfaceProductService {
         productEntity.setImage(productDto.getImage());
         productEntity.setLore(productDto.getLore());
         productEntity.setPrice(productDto.getPrice());
-        productEntity.setAvailable(productEntity.getAvailable());
-        productEntity.setType(productEntity.getType());
+        productEntity.setAvailable(productDto.getAvailable());
+        productEntity.setType(productDto.getType());
 
         productRepository.saveAndFlush(productEntity);
         return productEntity.getId();
     }
+
+    @Override
+    public void deleteProduct(Integer id) {
+        productRepository.deleteById(id);
+    }
+
+    @Override
+    public ProductDto getById(Integer id) {
+        ProductDto productDto = this.toDto(productRepository.findById(id).get());
+        return productDto;
+    }
+
 
 }

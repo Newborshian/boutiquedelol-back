@@ -33,4 +33,13 @@ public class ProductController {
         }
     }
 
+    @DeleteMapping("deleteProduct/{id}")
+    public void deleteProduct(@PathVariable("id") Integer id) {
+        service.deleteProduct(id);
+    }
+
+    @GetMapping("getById")
+    public ProductDto getById (@RequestParam Integer id) {
+        return service.getById(id);
+    }
 }

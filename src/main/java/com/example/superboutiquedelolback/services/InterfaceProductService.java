@@ -13,5 +13,9 @@ public interface InterfaceProductService {
 
     Integer addProduct(ProductDto productDto);
 
+    void deleteProduct(Integer id);
+
+    ProductDto getById(Integer id);
+
 }
 
