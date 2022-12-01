@@ -17,5 +17,7 @@ public interface InterfaceProductService {
 
     ProductDto getById(Integer id);
 
+    List<ProductDto> getAllProductOrderByNameAsc();
+    List<ProductDto> getAllProductOrderByNameDesc();
 }
 

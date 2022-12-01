@@ -41,4 +41,13 @@ public class ProductController {
     public ProductDto getById (@RequestParam Integer id) {
         return service.getById(id);
     }
+
+    @GetMapping("productOrderByNameAsc")
+    public List<ProductDto> getAllProductOrderByNameAsc() {
+        return service.getAllProductOrderByNameAsc();
+    }
+    @GetMapping("productOrderByNameDesc")
+    public List<ProductDto> getAllProductOrderByNameDesc() {
+        return service.getAllProductOrderByNameDesc();
+    }
 }

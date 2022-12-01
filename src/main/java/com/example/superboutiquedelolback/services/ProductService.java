@@ -63,5 +63,23 @@ public class ProductService implements InterfaceProductService {
         return productDto;
     }
 
+    @Override
+    public List<ProductDto> getAllProductOrderByNameAsc() {
+        List<ProductEntity> list = productRepository.findAllByOrderByNameAsc();
+        List<ProductDto> dtoList = new ArrayList<>();
+        for (ProductEntity productEntity : list) {
+            dtoList.add(this.toDto(productEntity));
+        }
+        return dtoList;
+    }
+    @Override
+    public List<ProductDto> getAllProductOrderByNameDesc() {
+        List<ProductEntity> list = productRepository.findAllByOrderByNameDesc();
+        List<ProductDto> dtoList = new ArrayList<>();
+        for (ProductEntity productEntity : list) {
+            dtoList.add(this.toDto(productEntity));
+        }
+        return dtoList;
+    }
 
 }
