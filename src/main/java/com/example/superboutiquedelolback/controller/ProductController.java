@@ -50,4 +50,16 @@ public class ProductController {
     public List<ProductDto> getAllProductOrderByNameDesc() {
         return service.getAllProductOrderByNameDesc();
     }
+    @GetMapping("productOrderByPriceAsc")
+    public List<ProductDto> getAllProductOrderByPriceAsc() {
+        return service.getAllProductOrderByPriceAsc();
+    }
+    @GetMapping("productOrderByPriceDesc")
+    public List<ProductDto> getAllProductOrderByPriceDesc() {
+        return service.getAllProductOrderByPriceDesc();
+    }
+    @GetMapping("type/{type}")
+    public List<ProductDto> getAllProductByType(@PathVariable String type) {
+        return service.getAllProductByType(type);
+    }
 }

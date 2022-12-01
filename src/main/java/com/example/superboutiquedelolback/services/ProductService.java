@@ -16,6 +16,15 @@ public class ProductService implements InterfaceProductService {
     private ProductRepository productRepository;
 
     @Override
+    public List<ProductDto> createList(List<ProductEntity> list) {
+        List<ProductDto> dtoList = new ArrayList<>();
+        for (ProductEntity productEntity : list) {
+            dtoList.add(this.toDto(productEntity));
+        }
+        return dtoList;
+    }
+
+    @Override
     public ProductDto toDto(ProductEntity productEntity) {
         ProductDto productDto = new ProductDto();
         productDto.setId(productEntity.getId());
@@ -27,15 +36,10 @@ public class ProductService implements InterfaceProductService {
         productDto.setType(productEntity.getType());
         return productDto;
     }
-
     @Override
     public List<ProductDto> getAll() {
         List<ProductEntity> list = productRepository.findAll();
-        List<ProductDto> dtoList = new ArrayList<>();
-        for (ProductEntity productEntity : list) {
-            dtoList.add(this.toDto(productEntity));
-        }
-        return dtoList;
+        return this.createList(list);
     }
 
     @Override
@@ -66,20 +70,27 @@ public class ProductService implements InterfaceProductService {
     @Override
     public List<ProductDto> getAllProductOrderByNameAsc() {
         List<ProductEntity> list = productRepository.findAllByOrderByNameAsc();
-        List<ProductDto> dtoList = new ArrayList<>();
-        for (ProductEntity productEntity : list) {
-            dtoList.add(this.toDto(productEntity));
-        }
-        return dtoList;
+        return this.createList(list);
     }
     @Override
     public List<ProductDto> getAllProductOrderByNameDesc() {
         List<ProductEntity> list = productRepository.findAllByOrderByNameDesc();
-        List<ProductDto> dtoList = new ArrayList<>();
-        for (ProductEntity productEntity : list) {
-            dtoList.add(this.toDto(productEntity));
-        }
-        return dtoList;
+        return this.createList(list);
+    }
+    @Override
+    public List<ProductDto> getAllProductOrderByPriceAsc() {
+        List<ProductEntity> list = productRepository.findAllByOrderByPriceAsc();
+        return this.createList(list);
+    }
+    @Override
+    public List<ProductDto> getAllProductOrderByPriceDesc() {
+        List<ProductEntity> list = productRepository.findAllByOrderByPriceDesc();
+        return this.createList(list);
     }
 
+    @Override
+    public List<ProductDto> getAllProductByType(String type) {
+        List<ProductEntity> list = productRepository.findByTypeLike(type);
+        return this.createList(list);
+    }
 }

@@ -7,6 +7,8 @@ import java.util.List;
 
 public interface InterfaceProductService {
 
+    List<ProductDto> createList(List<ProductEntity> list);
+
     ProductDto toDto(ProductEntity productEntity);
 
     List<ProductDto> getAll();
@@ -19,5 +21,8 @@ public interface InterfaceProductService {
 
     List<ProductDto> getAllProductOrderByNameAsc();
     List<ProductDto> getAllProductOrderByNameDesc();
+    List<ProductDto> getAllProductOrderByPriceAsc();
+    List<ProductDto> getAllProductOrderByPriceDesc();
+    List<ProductDto> getAllProductByType(String type);
 }
 
