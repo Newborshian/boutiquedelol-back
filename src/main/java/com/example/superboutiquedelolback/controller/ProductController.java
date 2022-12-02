@@ -27,7 +27,7 @@ public class ProductController {
         try {
             Integer id = service.addProduct(productDto);
             return new ResponseEntity<>(id, HttpStatus.OK);
-        } catch (Exception e){
+        } catch (Exception e) {
             return new ResponseEntity(e.getMessage(), HttpStatus.BAD_REQUEST);
         }
     }
@@ -38,7 +38,7 @@ public class ProductController {
     }
 
     @GetMapping("getById")
-    public ProductDto getById (@RequestParam Integer id) {
+    public ProductDto getById(@RequestParam Integer id) {
         return service.getById(id);
     }
 
@@ -46,20 +46,34 @@ public class ProductController {
     public List<ProductDto> getAllProductOrderByNameAsc() {
         return service.getAllProductOrderByNameAsc();
     }
+
     @GetMapping("productOrderByNameDesc")
     public List<ProductDto> getAllProductOrderByNameDesc() {
         return service.getAllProductOrderByNameDesc();
     }
+
     @GetMapping("productOrderByPriceAsc")
     public List<ProductDto> getAllProductOrderByPriceAsc() {
         return service.getAllProductOrderByPriceAsc();
     }
+
     @GetMapping("productOrderByPriceDesc")
     public List<ProductDto> getAllProductOrderByPriceDesc() {
         return service.getAllProductOrderByPriceDesc();
     }
+
     @GetMapping("type/{type}")
     public List<ProductDto> getAllProductByType(@PathVariable String type) {
         return service.getAllProductByType(type);
+    }
+
+    @GetMapping("name/{name}")
+    public List<ProductDto> getAllProductByName(@PathVariable String name) {
+        return service.getAllProductByName(name);
+    }
+
+    @GetMapping("price")
+    public List<ProductDto> getAllProductByPriceBetween(@RequestParam Double price1, @RequestParam Double price2) {
+        return service.getAllProductByPriceBetween(price1, price2);
     }
 }

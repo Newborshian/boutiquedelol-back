@@ -14,6 +14,8 @@ public interface ProductRepository extends JpaRepository<ProductEntity, Integer>
     List<ProductEntity> findAllByOrderByNameDesc();
     List<ProductEntity> findAllByOrderByPriceAsc();
     List<ProductEntity> findAllByOrderByPriceDesc();
-
     List<ProductEntity> findByTypeLike(@Param("type")String type);
+    List<ProductEntity> findByNameLike(@Param("name")String name);
+    List<ProductEntity> findByPriceBetween(@Param("price")Double price1, @Param("price")Double price2);
+
 }

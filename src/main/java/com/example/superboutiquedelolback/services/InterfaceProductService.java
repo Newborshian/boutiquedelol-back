@@ -24,5 +24,7 @@ public interface InterfaceProductService {
     List<ProductDto> getAllProductOrderByPriceAsc();
     List<ProductDto> getAllProductOrderByPriceDesc();
     List<ProductDto> getAllProductByType(String type);
+    List<ProductDto> getAllProductByName(String name);
+    List<ProductDto> getAllProductByPriceBetween(Double price1, Double price2);
 }
 

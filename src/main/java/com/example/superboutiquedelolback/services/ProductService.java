@@ -93,4 +93,15 @@ public class ProductService implements InterfaceProductService {
         List<ProductEntity> list = productRepository.findByTypeLike(type);
         return this.createList(list);
     }
+
+    @Override
+    public List<ProductDto> getAllProductByName(String name) {
+        List<ProductEntity> list = productRepository.findByNameLike("%" + name.toUpperCase() + "%");
+        return this.createList(list);
+    }
+    @Override
+    public List<ProductDto> getAllProductByPriceBetween(Double price1, Double price2) {
+        List<ProductEntity> list = productRepository.findByPriceBetween(price1, price2);
+        return this.createList(list);
+    }
 }
