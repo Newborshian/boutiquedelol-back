@@ -101,7 +101,7 @@ public class ProductService implements InterfaceProductService {
     }
     @Override
     public List<ProductDto> getAllProductByPriceBetween(Double price1, Double price2) {
-        List<ProductEntity> list = productRepository.findByPriceBetween(price1, price2);
+        List<ProductEntity> list = productRepository.getAllProductByPrice(price1, price2);
         return this.createList(list);
     }
 }
