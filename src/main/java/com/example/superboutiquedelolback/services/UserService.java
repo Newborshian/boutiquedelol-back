@@ -11,10 +11,8 @@ import java.util.List;
 
 @Service
 public class UserService implements InterfaceUserService {
-
     @Autowired
     private UserRepository userRepository;
-
 
     @Override
     public UserDto toService(UserEntity userEntity) {
@@ -28,7 +26,6 @@ public class UserService implements InterfaceUserService {
 
         return userDto;
     }
-
     @Override
     public List<UserDto> getAll() {
         List<UserEntity> list = userRepository.findAll();
@@ -38,7 +35,6 @@ public class UserService implements InterfaceUserService {
         }
         return userDtoList;
     }
-
     @Override
     public Integer addService(UserDto userDto) {
         UserEntity userEntity = new UserEntity();
@@ -52,16 +48,23 @@ public class UserService implements InterfaceUserService {
         userRepository.saveAndFlush(userEntity);
         return userEntity.getId();
     }
-
     @Override
     public void deleteUser(Integer id) {
         userRepository.deleteById(id);
 
     }
-
     @Override
     public UserDto getById(Integer id) {
         UserDto userDto = this.toService(userRepository.findById(id).get());
         return userDto;
     }
+    @Override
+    public Boolean loginService(String name, String password) {
+        if (userRepository.existsByNameAndPassword(name, password)){
+            return true;
+        } else {
+            return false;
+        }
+    }
+
 }

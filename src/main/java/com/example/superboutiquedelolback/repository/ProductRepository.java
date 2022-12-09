@@ -20,4 +20,5 @@ public interface ProductRepository extends JpaRepository<ProductEntity, Integer>
     @Query(value = "select * from products where price between ? and ?", nativeQuery = true)
     List<ProductEntity> getAllProductByPrice(@Param("price")Double price1, @Param("price")Double price2);
 
+
 }

@@ -42,4 +42,8 @@ public class UserController {
     public UserDto getById (@RequestParam Integer id) {
         return service.getById(id);
     }
+    @GetMapping("loginService")
+    public Boolean loginService(@RequestParam("name")String name, @RequestParam("password")String password){
+        return service.loginService(name, password);
+    }
 }
