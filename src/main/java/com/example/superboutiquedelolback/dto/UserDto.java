@@ -14,6 +14,8 @@ public class UserDto {
 
     private Boolean status;
 
+    private Boolean validateByAdmin;
+
     public Integer getId() {
         return id;
     }
@@ -60,5 +62,13 @@ public class UserDto {
 
     public void setStatus(Boolean status) {
         this.status = status;
+    }
+
+    public Boolean getValidateByAdmin() {
+        return validateByAdmin;
+    }
+
+    public void setValidateByAdmin(Boolean validateByAdmin) {
+        this.validateByAdmin = validateByAdmin;
     }
 }

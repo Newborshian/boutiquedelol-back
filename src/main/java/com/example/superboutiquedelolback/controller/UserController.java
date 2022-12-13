@@ -43,7 +43,16 @@ public class UserController {
         return service.getById(id);
     }
     @GetMapping("login")
-    public Boolean login(@RequestParam("name")String name, @RequestParam("password")String password){
-        return service.loginService(name, password);
+    public ResponseEntity<Integer> login(@RequestParam("name")String name, @RequestParam("password")String password){
+        if (name.length() < 1 || password.length() < 1){
+            return new ResponseEntity("Un des Champs est vide", HttpStatus.BAD_REQUEST);
+        }
+
+        try {
+            Integer res = service.loginService(name, password);
+            return new ResponseEntity(res, HttpStatus.OK);
+        } catch (Exception e){
+            return new ResponseEntity(e.getMessage(), HttpStatus.BAD_REQUEST);
+        }
     }
 }

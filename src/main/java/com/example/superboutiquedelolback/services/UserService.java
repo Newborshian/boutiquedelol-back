@@ -4,6 +4,7 @@ import com.example.superboutiquedelolback.dto.UserDto;
 import com.example.superboutiquedelolback.entity.UserEntity;
 import com.example.superboutiquedelolback.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.relational.core.sql.In;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -23,6 +24,7 @@ public class UserService implements InterfaceUserService {
         userDto.setMail(userEntity.getMail());
         userDto.setRole(userEntity.getRole());
         userDto.setStatus(userEntity.getStatus());
+        userDto.setValidateByAdmin(userEntity.getValidateByAdmin());
 
         return userDto;
     }
@@ -42,8 +44,9 @@ public class UserService implements InterfaceUserService {
         userEntity.setName(userDto.getName());
         userEntity.setPassword(userDto.getPassword());
         userEntity.setMail(userDto.getMail());
-        userEntity.setRole(userDto.getRole());
-        userEntity.setStatus(userDto.getStatus());
+        userEntity.setRole("user");
+        userEntity.setStatus(false);
+        userEntity.setValidateByAdmin(false);
 
         userRepository.saveAndFlush(userEntity);
         return userEntity.getId();
@@ -59,12 +62,17 @@ public class UserService implements InterfaceUserService {
         return userDto;
     }
     @Override
-    public Boolean loginService(String name, String password) {
+    public Integer loginService(String name, String password) {
         if (userRepository.existsByNameAndPassword(name, password)){
-            return true;
+            if (userRepository.getUserValidateByAdmin(name, password)){
+                return 1; //Login Good
+            } else {
+                return 2; //Not Validate By Admin
+            }
         } else {
-            return false;
+            return 0; //Login Bad
         }
+
     }
 
 }

@@ -17,5 +17,5 @@ public interface InterfaceUserService {
     void deleteUser(Integer id);
 
     UserDto getById(Integer id);
-    Boolean loginService(String name, String password);
+    Integer loginService(String name, String password);
 }
