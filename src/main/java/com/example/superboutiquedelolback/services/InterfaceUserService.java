@@ -8,11 +8,11 @@ import java.util.List;
 
 public interface InterfaceUserService {
 
-    UserDto toService(UserEntity userEntity);
+    UserDto toDto(UserEntity userEntity);
 
-    List<UserDto> getAll();
+    List<UserDto> getAllUser();
 
-    Integer addService(UserDto userDto);
+    Integer addUser(UserDto userDto);
 
     void deleteUser(Integer id);
 

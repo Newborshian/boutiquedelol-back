@@ -20,13 +20,13 @@ public class UserController {
 
     @GetMapping("allUser")
     public List<UserDto> getAllUser() {
-        return service.getAll();
+        return service.getAllUser();
     }
 
     @PostMapping("addUser")
     public ResponseEntity<Integer> addUser(@RequestBody UserDto userDto) {
         try {
-            Integer id = service.addService(userDto);
+            Integer id = service.addUser(userDto);
             return new ResponseEntity<>(id, HttpStatus.OK);
         } catch (Exception e){
             return new ResponseEntity(e.getMessage(), HttpStatus.BAD_REQUEST);
@@ -42,8 +42,8 @@ public class UserController {
     public UserDto getById (@RequestParam Integer id) {
         return service.getById(id);
     }
-    @GetMapping("loginService")
-    public Boolean loginService(@RequestParam("name")String name, @RequestParam("password")String password){
+    @GetMapping("login")
+    public Boolean login(@RequestParam("name")String name, @RequestParam("password")String password){
         return service.loginService(name, password);
     }
 }

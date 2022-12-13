@@ -15,7 +15,7 @@ public class UserService implements InterfaceUserService {
     private UserRepository userRepository;
 
     @Override
-    public UserDto toService(UserEntity userEntity) {
+    public UserDto toDto(UserEntity userEntity) {
         UserDto userDto = new UserDto();
         userDto.setId(userEntity.getId());
         userDto.setName(userEntity.getName());
@@ -27,16 +27,16 @@ public class UserService implements InterfaceUserService {
         return userDto;
     }
     @Override
-    public List<UserDto> getAll() {
+    public List<UserDto> getAllUser() {
         List<UserEntity> list = userRepository.findAll();
         List<UserDto> userDtoList = new ArrayList<>();
         for (UserEntity userEntity : list) {
-            userDtoList.add(this.toService(userEntity));
+            userDtoList.add(this.toDto(userEntity));
         }
         return userDtoList;
     }
     @Override
-    public Integer addService(UserDto userDto) {
+    public Integer addUser(UserDto userDto) {
         UserEntity userEntity = new UserEntity();
         userEntity.setId(userDto.getId());
         userEntity.setName(userDto.getName());
@@ -55,7 +55,7 @@ public class UserService implements InterfaceUserService {
     }
     @Override
     public UserDto getById(Integer id) {
-        UserDto userDto = this.toService(userRepository.findById(id).get());
+        UserDto userDto = this.toDto(userRepository.findById(id).get());
         return userDto;
     }
     @Override
