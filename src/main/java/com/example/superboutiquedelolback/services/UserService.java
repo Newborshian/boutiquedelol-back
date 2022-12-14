@@ -64,7 +64,7 @@ public class UserService implements InterfaceUserService {
     @Override
     public Integer loginService(String name, String password) {
         if (userRepository.existsByNameAndPassword(name, password)){
-            if (userRepository.getUserValidateByAdmin(name, password)){
+            if (userRepository.existsByNameAndPasswordAndValidateByAdminIsTrue(name, password)){
                 return 1; //Login Good
             } else {
                 return 2; //Not Validate By Admin

@@ -12,7 +12,6 @@ import java.util.List;
 @Repository
 public interface UserRepository extends JpaRepository<UserEntity, Integer> {
 
-    @Query(value = "select * from users where name ? and password ? and validate_by_admin = true")
-    Boolean getUserValidateByAdmin(@Param("name")String name, @Param("password")String password);
+    Boolean existsByNameAndPasswordAndValidateByAdminIsTrue(@Param("name")String name, @Param("password")String password);
     Boolean existsByNameAndPassword(@Param("name")String name, @Param("password")String password);
 }
