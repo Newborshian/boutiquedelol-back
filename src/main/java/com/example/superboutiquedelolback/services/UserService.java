@@ -28,15 +28,35 @@ public class UserService implements InterfaceUserService {
 
         return userDto;
     }
+
     @Override
-    public List<UserDto> getAllUser() {
-        List<UserEntity> list = userRepository.findAll();
+    public List<UserDto> createList(List<UserEntity> list) {
         List<UserDto> userDtoList = new ArrayList<>();
         for (UserEntity userEntity : list) {
             userDtoList.add(this.toDto(userEntity));
         }
         return userDtoList;
     }
+
+
+    @Override
+    public List<UserDto> getAllUser() {
+        List<UserEntity> list = userRepository.findAll();
+        return this.createList(list);
+    }
+
+    @Override
+    public List<UserDto> getAllUserValidate() {
+        List<UserEntity> list = userRepository.findAllByValidateByAdminIsTrue();
+        return this.createList(list);
+    }
+
+    @Override
+    public List<UserDto> getAllUserNotValidate() {
+        List<UserEntity> list = userRepository.findAllByValidateByAdminIsFalse();
+        return this.createList(list);
+    }
+
     @Override
     public Integer addUser(UserDto userDto) {
         UserEntity userEntity = new UserEntity();
@@ -51,16 +71,18 @@ public class UserService implements InterfaceUserService {
         userRepository.saveAndFlush(userEntity);
         return userEntity.getId();
     }
+
     @Override
     public void deleteUser(Integer id) {
         userRepository.deleteById(id);
-
     }
+
     @Override
     public UserDto getById(Integer id) {
         UserDto userDto = this.toDto(userRepository.findById(id).get());
         return userDto;
     }
+
     @Override
     public Integer loginService(String name, String password) {
         if (userRepository.existsByNameAndPassword(name, password)){
@@ -72,7 +94,5 @@ public class UserService implements InterfaceUserService {
         } else {
             return 0; //Login Bad
         }
-
     }
-
 }

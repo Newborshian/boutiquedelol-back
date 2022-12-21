@@ -36,6 +36,9 @@ public class ProductService implements InterfaceProductService {
         productDto.setType(productEntity.getType());
         return productDto;
     }
+
+
+
     @Override
     public List<ProductDto> getAll() {
         List<ProductEntity> list = productRepository.findAll();

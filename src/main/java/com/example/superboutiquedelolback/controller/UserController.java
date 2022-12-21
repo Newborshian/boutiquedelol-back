@@ -23,6 +23,16 @@ public class UserController {
         return service.getAllUser();
     }
 
+    @GetMapping("allUserValidate")
+    public List<UserDto> getAllUserValidate() {
+        return service.getAllUserValidate();
+    }
+
+    @GetMapping("allUserNotValidate")
+    public List<UserDto> getAllUserNotValidate() {
+        return service.getAllUserNotValidate();
+    }
+
     @PostMapping("addUser")
     public ResponseEntity<Integer> addUser(@RequestBody UserDto userDto) {
         try {
