@@ -65,4 +65,9 @@ public class UserController {
             return new ResponseEntity(e.getMessage(), HttpStatus.BAD_REQUEST);
         }
     }
+
+    @GetMapping("getInfoForLogged")
+    public UserDto getInfoForLogged(@RequestParam("name") String name, @RequestParam("password") String password){
+        return service.getInfoForLogged(name, password);
+    }
 }

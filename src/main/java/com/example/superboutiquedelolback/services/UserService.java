@@ -95,4 +95,11 @@ public class UserService implements InterfaceUserService {
             return 0; //Login Bad
         }
     }
+
+    @Override
+    public UserDto getInfoForLogged(String name, String password) {
+        UserEntity userEntity = userRepository.findByNameAndPassword(name, password);
+        UserDto userDto = this.toDto(userEntity);
+        return userDto;
+    }
 }

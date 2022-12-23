@@ -17,6 +17,7 @@ public interface InterfaceUserService {
     void deleteUser(Integer id);
     UserDto getById(Integer id);
     Integer loginService(String name, String password);
+    UserDto getInfoForLogged(String name, String password);
 
 
 }

@@ -16,4 +16,5 @@ public interface UserRepository extends JpaRepository<UserEntity, Integer> {
     Boolean existsByNameAndPassword(@Param("name")String name, @Param("password")String password);
     List<UserEntity> findAllByValidateByAdminIsTrue();
     List<UserEntity> findAllByValidateByAdminIsFalse();
+    UserEntity findByNameAndPassword(@Param("name")String name, @Param("password")String password);
 }
