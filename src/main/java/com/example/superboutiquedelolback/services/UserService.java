@@ -23,7 +23,6 @@ public class UserService implements InterfaceUserService {
         userDto.setPassword(userEntity.getPassword());
         userDto.setMail(userEntity.getMail());
         userDto.setRole(userEntity.getRole());
-        userDto.setStatus(userEntity.getStatus());
         userDto.setValidateByAdmin(userEntity.getValidateByAdmin());
 
         return userDto;
@@ -65,7 +64,6 @@ public class UserService implements InterfaceUserService {
         userEntity.setPassword(userDto.getPassword());
         userEntity.setMail(userDto.getMail());
         userEntity.setRole("user");
-        userEntity.setStatus(false);
         userEntity.setValidateByAdmin(false);
 
         userRepository.saveAndFlush(userEntity);

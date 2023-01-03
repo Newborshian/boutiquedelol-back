@@ -12,8 +12,6 @@ public class UserDto {
 
     private String role;
 
-    private Boolean status;
-
     private Boolean validateByAdmin;
 
     public Integer getId() {
@@ -54,14 +52,6 @@ public class UserDto {
 
     public void setRole(String role) {
         this.role = role;
-    }
-
-    public Boolean getStatus() {
-        return status;
-    }
-
-    public void setStatus(Boolean status) {
-        this.status = status;
     }
 
     public Boolean getValidateByAdmin() {

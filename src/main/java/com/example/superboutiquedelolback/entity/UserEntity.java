@@ -23,9 +23,6 @@ public class UserEntity {
     @Column(name = "role")
     private String role;
 
-    @Column(name = "status")
-    private Boolean status;
-
     @Column(name = "validate_by_admin")
     private Boolean validateByAdmin;
 
@@ -69,13 +66,6 @@ public class UserEntity {
         this.role = role;
     }
 
-    public Boolean getStatus() {
-        return status;
-    }
-
-    public void setStatus(Boolean status) {
-        this.status = status;
-    }
 
     public Boolean getValidateByAdmin() {
         return validateByAdmin;
