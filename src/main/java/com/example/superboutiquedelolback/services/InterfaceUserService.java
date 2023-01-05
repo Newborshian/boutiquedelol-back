@@ -18,6 +18,7 @@ public interface InterfaceUserService {
     UserDto getById(Integer id);
     Integer loginService(String name, String password);
     UserDto getInfoForLogged(String name, String password);
+    Boolean userValidateByAdmin(Integer id);
 
 
 }

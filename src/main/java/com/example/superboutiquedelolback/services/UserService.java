@@ -100,4 +100,12 @@ public class UserService implements InterfaceUserService {
         UserDto userDto = this.toDto(userEntity);
         return userDto;
     }
+
+    @Override
+    public Boolean userValidateByAdmin(Integer id) {
+        UserEntity userEntity = userRepository.findById(id).get();
+        userEntity.setValidateByAdmin(true);
+        userRepository.save(userEntity);
+        return true;
+    }
 }

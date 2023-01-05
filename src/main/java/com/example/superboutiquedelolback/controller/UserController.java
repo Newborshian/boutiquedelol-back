@@ -70,4 +70,14 @@ public class UserController {
     public UserDto getInfoForLogged(@RequestParam("name") String name, @RequestParam("password") String password){
         return service.getInfoForLogged(name, password);
     }
+
+    @GetMapping("userValidateByAdmin")
+    public ResponseEntity<Boolean> userValidateByAdmin(@RequestParam("id") Integer id) {
+        try {
+            Boolean response = service.userValidateByAdmin(id);
+            return new ResponseEntity<>(response, HttpStatus.OK);
+        } catch (Exception e){
+            return new ResponseEntity(e.getMessage(), HttpStatus.BAD_REQUEST);
+        }
+    }
 }
