@@ -80,4 +80,14 @@ public class UserController {
             return new ResponseEntity(e.getMessage(), HttpStatus.BAD_REQUEST);
         }
     }
+
+    @PostMapping("userChange")
+    public ResponseEntity<Boolean> userChange(@RequestBody UserDto  userDto) {
+        try {
+            Boolean response = service.userChange(userDto);
+            return new ResponseEntity<>(response, HttpStatus.OK);
+        } catch (Exception e){
+            return new ResponseEntity(e.getMessage(), HttpStatus.BAD_REQUEST);
+        }
+    }
 }

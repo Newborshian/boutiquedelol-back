@@ -108,4 +108,15 @@ public class UserService implements InterfaceUserService {
         userRepository.save(userEntity);
         return true;
     }
+
+    @Override
+    public Boolean userChange(UserDto userDto) {
+        UserEntity userEntity = userRepository.findById(userDto.getId()).get();
+        userEntity.setName(userDto.getName());
+        userEntity.setPassword(userDto.getPassword());
+        userEntity.setMail(userDto.getMail());
+        userDto.setRole(userDto.getRole());
+        userRepository.save(userEntity);
+        return true;
+    }
 }
