@@ -82,7 +82,7 @@ public class UserController {
     }
 
     @PostMapping("userChange")
-    public ResponseEntity<Boolean> userChange(@RequestBody UserDto  userDto) {
+    public ResponseEntity<Boolean> userChange(@RequestBody UserDto userDto) {
         try {
             Boolean response = service.userChange(userDto);
             return new ResponseEntity<>(response, HttpStatus.OK);
