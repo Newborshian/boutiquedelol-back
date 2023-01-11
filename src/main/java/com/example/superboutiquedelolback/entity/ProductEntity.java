@@ -8,10 +8,10 @@ public class ProductEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
+    @Column(name = "product_id")
     private Integer id;
 
-    @Column(name = "name")
+    @Column(name = "product_name")
     private String name;
 
     @Column(name = "image")
@@ -26,7 +26,7 @@ public class ProductEntity {
     @Column(name = "available")
     private Boolean available;
 
-    @Column(name = "type")
+    @Column(name = "product_type")
     private String type;
 
     public Integer getId() {
@@ -80,7 +80,6 @@ public class ProductEntity {
     public String getType() {
         return type;
     }
-
     public void setType(String type) {
         this.type = type;
     }

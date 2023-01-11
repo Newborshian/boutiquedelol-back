@@ -4,7 +4,6 @@ import com.example.superboutiquedelolback.dto.UserDto;
 import com.example.superboutiquedelolback.entity.UserEntity;
 import com.example.superboutiquedelolback.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.relational.core.sql.In;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;

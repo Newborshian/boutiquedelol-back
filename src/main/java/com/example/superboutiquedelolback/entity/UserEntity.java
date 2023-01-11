@@ -8,20 +8,20 @@ public class UserEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
+    @Column(name = "user_id")
     private Integer id;
 
-    @Column(name = "name")
+    @Column(name = "user_name")
     private String name;
 
-    @Column(name = "password")
+    @Column(name = "user_password")
     private String password;
+
+    @Column(name = "user_role")
+    private String role;
 
     @Column(name = "mail")
     private String mail;
-
-    @Column(name = "role")
-    private String role;
 
     @Column(name = "validate_by_admin")
     private Boolean validateByAdmin;
