@@ -1,6 +1,8 @@
 package com.example.superboutiquedelolback.entity;
 
 import jakarta.persistence.*;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 
 import java.util.Date;
 
@@ -10,7 +12,7 @@ public class DetailEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "details_id")
+    @Column(name = "detail_id")
     private Integer id;
 
     @OneToOne(fetch = FetchType.EAGER)

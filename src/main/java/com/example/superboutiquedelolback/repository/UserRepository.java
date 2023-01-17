@@ -17,4 +17,6 @@ public interface UserRepository extends JpaRepository<UserEntity, Integer> {
     List<UserEntity> findAllByValidateByAdminIsTrue();
     List<UserEntity> findAllByValidateByAdminIsFalse();
     UserEntity findByNameAndPassword(@Param("name")String name, @Param("password")String password);
+    @Query(value = "select * from details natural join users where id = ?", nativeQuery = true)
+    UserEntity userAndDetailsUser(@Param("id")Integer id);
 }

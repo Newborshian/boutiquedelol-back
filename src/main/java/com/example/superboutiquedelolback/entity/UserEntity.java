@@ -1,6 +1,10 @@
 package com.example.superboutiquedelolback.entity;
 
 import jakarta.persistence.*;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
+
+import java.util.Set;
 
 @Entity
 @Table(name = "users")
@@ -25,6 +29,10 @@ public class UserEntity {
 
     @Column(name = "validate_by_admin")
     private Boolean validateByAdmin;
+
+    @OneToOne
+    @JoinColumn(name = "user_id", referencedColumnName = "detail_id")
+    private DetailEntity detailEntity;
 
     public Integer getId() {
         return id;
@@ -73,5 +81,13 @@ public class UserEntity {
 
     public void setValidateByAdmin(Boolean validateByAdmin) {
         this.validateByAdmin = validateByAdmin;
+    }
+
+    public DetailEntity getDetailEntity() {
+        return detailEntity;
+    }
+
+    public void setDetailEntity(DetailEntity detailEntity) {
+        this.detailEntity = detailEntity;
     }
 }
