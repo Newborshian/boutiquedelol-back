@@ -119,10 +119,4 @@ public class UserService implements InterfaceUserService {
         userRepository.save(userEntity);
         return true;
     }
-
-    @Override
-    public UserEntity userAndDetailsUser(Integer id) {
-        UserEntity userEntity = userRepository.userAndDetailsUser(id);
-        return userEntity;
-    }
 }

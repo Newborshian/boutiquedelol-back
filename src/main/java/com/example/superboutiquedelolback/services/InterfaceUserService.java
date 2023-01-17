@@ -20,5 +20,4 @@ public interface InterfaceUserService {
     UserDto getInfoForLogged(String name, String password);
     Boolean userValidateByAdmin(Integer id);
     Boolean userChange (UserDto userDto);
-    UserEntity userAndDetailsUser(Integer id);
 }
