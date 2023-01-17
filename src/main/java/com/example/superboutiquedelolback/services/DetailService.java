@@ -28,9 +28,9 @@ public class DetailService implements InterfaceDetailService {
         detailDto.setDescription(detailEntity.getDescription());
         detailDto.setAddress(detailEntity.getAddress());
         detailDto.setZipCode(detailEntity.getZipCode());
-        detailDto.setCity(detailDto.getCity());
+        detailDto.setCity(detailEntity.getCity());
         detailDto.setPhoneNumber(detailEntity.getPhoneNumber());
-        detailDto.setImage(detailDto.getImage());
+        detailDto.setImage(detailEntity.getImage());
         return detailDto;
     }
 
