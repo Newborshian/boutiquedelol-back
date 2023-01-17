@@ -1,6 +1,7 @@
 package com.example.superboutiquedelolback.controller;
 
 import com.example.superboutiquedelolback.dto.UserDto;
+import com.example.superboutiquedelolback.entity.UserEntity;
 import com.example.superboutiquedelolback.services.InterfaceUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

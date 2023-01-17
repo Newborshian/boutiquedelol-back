@@ -1,6 +1,10 @@
 package com.example.superboutiquedelolback.entity;
 
 import jakarta.persistence.*;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
+
+import java.util.Set;
 
 @Entity
 @Table(name = "users")
@@ -8,23 +12,27 @@ public class UserEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
+    @Column(name = "user_id")
     private Integer id;
 
-    @Column(name = "name")
+    @Column(name = "user_name")
     private String name;
 
-    @Column(name = "password")
+    @Column(name = "user_password")
     private String password;
+
+    @Column(name = "user_role")
+    private String role;
 
     @Column(name = "mail")
     private String mail;
 
-    @Column(name = "role")
-    private String role;
-
     @Column(name = "validate_by_admin")
     private Boolean validateByAdmin;
+
+    @OneToOne
+    @JoinColumn(name = "user_id", referencedColumnName = "detail_id")
+    private DetailEntity detailEntity;
 
     public Integer getId() {
         return id;
@@ -73,5 +81,13 @@ public class UserEntity {
 
     public void setValidateByAdmin(Boolean validateByAdmin) {
         this.validateByAdmin = validateByAdmin;
+    }
+
+    public DetailEntity getDetailEntity() {
+        return detailEntity;
+    }
+
+    public void setDetailEntity(DetailEntity detailEntity) {
+        this.detailEntity = detailEntity;
     }
 }

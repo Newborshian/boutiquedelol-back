@@ -2,9 +2,9 @@ package com.example.superboutiquedelolback.services;
 
 import com.example.superboutiquedelolback.dto.UserDto;
 import com.example.superboutiquedelolback.entity.UserEntity;
+import com.example.superboutiquedelolback.repository.DetailsRepository;
 import com.example.superboutiquedelolback.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.relational.core.sql.In;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -118,5 +118,11 @@ public class UserService implements InterfaceUserService {
         userDto.setRole(userDto.getRole());
         userRepository.save(userEntity);
         return true;
+    }
+
+    @Override
+    public UserEntity userAndDetailsUser(Integer id) {
+        UserEntity userEntity = userRepository.userAndDetailsUser(id);
+        return userEntity;
     }
 }
