@@ -19,4 +19,5 @@ public interface UserRepository extends JpaRepository<UserEntity, Integer> {
     UserEntity findByNameAndPassword(@Param("name")String name, @Param("password")String password);
     @Query(value = "select * from details natural join users where id = ?", nativeQuery = true)
     UserEntity userAndDetailsUser(@Param("id")Integer id);
+    UserEntity findByName(@Param("name")String name);
 }
