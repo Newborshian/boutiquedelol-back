@@ -53,6 +53,7 @@ public class UserController {
     public UserDto getById (@RequestParam Integer id) {
         return service.getById(id);
     }
+
     @GetMapping("login")
     public ResponseEntity<Integer> login(@RequestParam("name")String name, @RequestParam("password")String password){
         if (name.length() < 1 || password.length() < 1){
