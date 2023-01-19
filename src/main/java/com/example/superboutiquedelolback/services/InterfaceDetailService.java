@@ -11,4 +11,6 @@ public interface InterfaceDetailService {
 
     List<DetailDto> getAll();
 
+    List<DetailDto> getByName(String name);
+
 }
