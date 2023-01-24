@@ -13,5 +13,5 @@ public interface InterfaceDetailService {
     List<DetailDto> getAll();
 
     List<DetailDto> getByName(String name);
-    Boolean detailsChange (DetailDto detailDto);
+    Boolean detailsChange(DetailDto detailDto);
 }

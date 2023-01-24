@@ -63,8 +63,8 @@ public class DetailService implements InterfaceDetailService {
 
     @Override
     public Boolean detailsChange(DetailDto detailDto) {
-      DetailEntity detailEntity = new DetailEntity();
-      UserEntity userEntity = new UserEntity();
+      DetailEntity detailEntity = detailsRepository.findById(detailDto.getDetailsId()).get();
+      UserEntity userEntity = userRepository.findById(detailDto.getUserId()).get();
       detailEntity.setGender(detailDto.getGender());
       detailEntity.setLastName(detailDto.getLastName());
       detailEntity.setFirstName(detailDto.getFirstName());
@@ -74,8 +74,8 @@ public class DetailService implements InterfaceDetailService {
       detailEntity.setPhoneNumber(detailDto.getPhoneNumber());
       userEntity.setName(detailDto.getName());
       userEntity.setMail(detailDto.getMail());
-      detailsRepository.saveAndFlush(detailEntity);
-      userRepository.saveAndFlush(userEntity);
+      detailsRepository.save(detailEntity);
+      userRepository.save(userEntity);
       return true;
     }
 }
