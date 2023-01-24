@@ -3,6 +3,7 @@ package com.example.superboutiquedelolback.services;
 
 import com.example.superboutiquedelolback.dto.DetailDto;
 import com.example.superboutiquedelolback.entity.DetailEntity;
+import com.example.superboutiquedelolback.entity.UserEntity;
 import com.example.superboutiquedelolback.repository.DetailsRepository;
 import com.example.superboutiquedelolback.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -58,5 +59,23 @@ public class DetailService implements InterfaceDetailService {
             finalList.add(this.toDto(detailEntity));
         }
         return finalList;
+    }
+
+    @Override
+    public Boolean detailsChange(DetailDto detailDto) {
+      DetailEntity detailEntity = new DetailEntity();
+      UserEntity userEntity = new UserEntity();
+      detailEntity.setGender(detailDto.getGender());
+      detailEntity.setLastName(detailDto.getLastName());
+      detailEntity.setFirstName(detailDto.getFirstName());
+      detailEntity.setAddress(detailDto.getAddress());
+      detailEntity.setZipCode(detailDto.getZipCode());
+      detailEntity.setCity(detailDto.getCity());
+      detailEntity.setPhoneNumber(detailDto.getPhoneNumber());
+      userEntity.setName(detailDto.getName());
+      userEntity.setMail(detailDto.getMail());
+      detailsRepository.saveAndFlush(detailEntity);
+      userRepository.saveAndFlush(userEntity);
+      return true;
     }
 }
