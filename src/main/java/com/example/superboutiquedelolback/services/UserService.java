@@ -115,7 +115,7 @@ public class UserService implements InterfaceUserService {
         userEntity.setName(userDto.getName());
         userEntity.setPassword(userDto.getPassword());
         userEntity.setMail(userDto.getMail());
-        userDto.setRole(userDto.getRole());
+        userEntity.setRole(userDto.getRole());
         userRepository.save(userEntity);
         return true;
     }

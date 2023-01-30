@@ -66,6 +66,8 @@ public class DetailService implements InterfaceDetailService {
       DetailEntity detailEntity = detailsRepository.findById(detailDto.getDetailsId()).get();
       UserEntity userEntity = userRepository.findById(detailDto.getUserId()).get();
       detailEntity.setGender(detailDto.getGender());
+      detailEntity.setDescription(detailDto.getDescription());
+      detailEntity.setImage(detailDto.getImage());
       detailEntity.setLastName(detailDto.getLastName());
       detailEntity.setFirstName(detailDto.getFirstName());
       detailEntity.setAddress(detailDto.getAddress());
